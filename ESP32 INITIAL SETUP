@@ -1,0 +1,25 @@
+/*RUN THIS CODE ONLY ONCE TO SETUP YOUR ESP32 TO STAY ACTIVE AND LISTEN TO THE OUTPUTS*/
+const int ledPin = 2;
+
+void setup()
+{
+    pinMode(ledPin, OUTPUT);
+    Serial.begin(115200);
+}
+
+void loop()
+{
+    if (Serial.available())
+    {
+        byte received = Serial.read();
+
+        if (received == 1)
+        {
+            digitalWrite(ledPin, HIGH);
+        }
+        else if (received == 0)
+        {
+            digitalWrite(ledPin, LOW);
+        }
+    }
+}
